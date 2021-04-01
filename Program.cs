@@ -12,9 +12,10 @@ namespace AdapterPatternDemo
         {
             string path = @"C:\Users\ybrad\OneDrive\Desktop\IT 514\AdapterPatternDemo\Products1.csv";
             FileGateway aGateway = new FileGateway();
-            aGateway.GetProducts(path);
+            NewFileGateWay newGateWay = new NewFileGateWay(aGateway);
+            newGateWay.GetProducts(path);
             ProductCatalog aCatalog = new ProductCatalog();
-            aCatalog.Print(aGateway);
+            aCatalog.Print(newGateWay);
         }
     }
 }

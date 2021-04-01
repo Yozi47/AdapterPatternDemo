@@ -9,25 +9,42 @@ namespace AdapterPatternDemo
 {
     public class FileGateway : IGetProducts
     {
-        public Stack<AbstractProduct> products = new Stack<AbstractProduct>();
-        public Stack<AbstractProduct> GetProducts(string path)
+        public Queue<AbstractProduct> products = new Queue<AbstractProduct>();
+        public Queue<AbstractProduct> GetProducts(string path)
         {
-            foreach(string line in File.ReadAllLines(path))
+            string fullPath = Path.GetFullPath(path);
+            string[] allRows = { };
+            string[] allColumns = { };
+
+            Queue<AbstractProduct> aQueueOfProducts = new Queue<AbstractProduct>();
+
+            // Create a temperoary variable to create one employee each time through the loop
+            Product aProduct;
+
+            allRows = File.ReadAllLines(fullPath);
+
+            int index = 1;
+
+            while (index < allRows.Length)
             {
-                List<string> listElements = line.Split(',').ToList();
-                products.Push(new Product(listElements[1]));
+                // Split ONE row into an array of information for One Employee
+                allColumns = allRows[index].Split(',');
+
+                aProduct = new Product(allColumns[1]);
+                products.Enqueue(aProduct);
+                index++;
             }
             return products;
         }
-
         public override string ToString()
         {
-            string aString = "";
-            foreach(Product product in products)
+            string message = "";
+            foreach (AbstractProduct product in products)
             {
-                aString = aString + product.ToString() + "\n";
+                message += product.ToString() + "\n";
             }
-            return aString;
+
+            return message;
         }
     }
 }

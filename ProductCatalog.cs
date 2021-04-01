@@ -8,10 +8,19 @@ namespace AdapterPatternDemo
 {
     public class ProductCatalog
     {
-        public void Print(FileGateway products)
+        public void Print(object gateway)
         {
-            Console.WriteLine(products.ToString());
+            Console.WriteLine(gateway.ToString());
             Console.ReadLine();
         }
     }
+
+    //public class NewProductCatalog
+    //{
+    //    public void Print(IGetProductStack gateway)
+    //    {
+    //        Console.WriteLine(gateway.ToString());
+    //        Console.ReadLine();
+    //    }
+    //}
 }

@@ -46,6 +46,8 @@
     <Compile Include="AbstractProduct.cs" />
     <Compile Include="FileGateway.cs" />
     <Compile Include="IGetProducts.cs" />
+    <Compile Include="IGetProductStack.cs" />
+    <Compile Include="NewFileGateWay.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductCatalog.cs" />
     <Compile Include="Program.cs" />

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AdapterPatternDemo
 {
-    public interface IGetProducts
+    public interface IGetProductStack
     {
-        Queue<AbstractProduct> GetProducts(string path);
+        Stack<AbstractProduct> GetProducts(string path);
     }
 }
